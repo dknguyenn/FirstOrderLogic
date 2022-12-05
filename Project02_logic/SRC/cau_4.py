@@ -2,7 +2,7 @@ import os
 
 def printOut(a,count,i):
     cwd = os.getcwd()
-    output_folder=os.path.join(cwd,'SRC\OUTPUT')
+    output_folder=os.path.join(cwd,'OUTPUT')
     with open(output_folder+"\output"+str(i)+".txt","a") as f:
         print(count,file=f)
         for prop in a:
@@ -17,12 +17,12 @@ def printOut(a,count,i):
                     else: print(chr(liter),file=f) 
 def printBrackets(i):
     cwd = os.getcwd()
-    output_folder=os.path.join(cwd,'SRC\OUTPUT')
+    output_folder=os.path.join(cwd,'OUTPUT')
     with open(output_folder+"\output"+str(i)+".txt","a") as f:
         print('{}',file=f)
 def printResult(res,i):
     cwd = os.getcwd()
-    output_folder=os.path.join(cwd,'SRC\OUTPUT')
+    output_folder=os.path.join(cwd,'OUTPUT')
     with open(output_folder+"\output"+str(i)+".txt","a") as f:
         if res==True: print('YES',file=f)
         else: print ('NO',file=f)
@@ -132,7 +132,7 @@ def PL_RESOLUTION(liters,index):
     printResult(res,index)
 def main():
     cwd = os.getcwd()
-    input_folder=os.path.join(cwd,'SRC\INPUT')
+    input_folder=os.path.join(cwd,'INPUT')
     index=0 # index of file
     for input in os.listdir(input_folder):
         file_name=os.path.join(input_folder, input)
