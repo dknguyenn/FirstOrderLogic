@@ -3,7 +3,14 @@ import os
 def printOut(a,count,i):
     cwd = os.getcwd()
     output_folder=os.path.join(cwd,'OUTPUT')
-    with open(output_folder+"\output"+str(i)+".txt","a") as f:
+    if os.path.isfile(output_folder+"\output"+str(i)+".txt"):         
+        with open(output_folder+"\output"+str(i)+".txt","r") as f1:
+            for line in f1:
+                pass
+            lastLine=line
+        if lastLine=='YES' or lastLine=='NO':
+            os.remove(output_folder+"\output"+str(i)+".txt")
+    with open(output_folder+"\output"+str(i)+".txt","a") as f:        
         print(count,file=f)
         for prop in a:
             for liter in prop:
@@ -90,7 +97,7 @@ def PL_RESOLUTION(liters,index):
                                             tmp.append(liter)
                                             tmp=list(set(liters[j])-set(tmp))
                                             tmp=sorting(tmp)
-                                            if tmp not in liters: # kiem tra neu da ton tai menh de trong list thi khong in ra
+                                            if tmp not in liters and tmp not in sublist: # kiem tra neu da ton tai menh de trong list thi khong in ra
                                                 sublist.append(tmp)
                                                 count+=1
                                             else: tmp=[]
@@ -100,7 +107,7 @@ def PL_RESOLUTION(liters,index):
                                             tmp.append(liter)
                                             tmp=list(set(liters[i])-set(tmp))
                                             tmp=sorting(tmp)
-                                            if tmp not in liters:
+                                            if tmp not in liters and tmp not in sublist:
                                                 sublist.append(tmp)
                                                 count+=1
                                             else: tmp=[]
@@ -114,7 +121,7 @@ def PL_RESOLUTION(liters,index):
                                         tmp=list(set(liters[i]+liters[j])-set(tmp))
                                         tmp=sorting(tmp)
                                         dn+=1
-                            if tmp not in liters and dn==1:
+                            if tmp not in liters and tmp not in sublist and dn==1:
                                 sublist.append(tmp)
                                 count+=1
                             else: tmp=[]            
